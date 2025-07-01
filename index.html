@@ -66,6 +66,7 @@
         }
         .button-group {
             display: flex;
+            flex-wrap: wrap; /* Allow buttons to wrap on smaller screens */
             gap: 1rem;
             justify-content: center;
             margin-top: 1.5rem;
@@ -92,6 +93,14 @@
         }
         .btn-secondary:hover {
             background-color: #d1d5db; /* Darker light gray */
+            transform: translateY(-2px);
+        }
+        .btn-accent { /* New style for "오늘의 추천 배우" button */
+            background-color: #10b981; /* Emerald green */
+            color: white;
+        }
+        .btn-accent:hover {
+            background-color: #059669; /* Darker emerald */
             transform: translateY(-2px);
         }
         .results-container {
@@ -146,41 +155,7 @@
             grid-template-columns: 1fr;
             gap: 1.5rem;
         }
-        /* New style for body type buttons */
-        .body-type-buttons {
-            display: flex;
-            flex-wrap: wrap; /* Allow wrapping on smaller screens */
-            gap: 0.75rem;
-            justify-content: center;
-            margin-top: 1.5rem;
-            padding-top: 1.5rem;
-            border-top: 1px solid #e5e7eb;
-        }
-        .body-type-btn {
-            padding: 0.6rem 1.2rem;
-            border-radius: 0.75rem;
-            font-weight: 500;
-            cursor: pointer;
-            background-color: #e0f2fe; /* Light blue */
-            color: #0284c7; /* Darker blue text */
-            border: 1px solid #90cdf4; /* Blue border */
-            transition: background-color 0.2s ease, transform 0.1s ease, box-shadow 0.2s ease;
-            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
-        }
-        .body-type-btn:hover {
-            background-color: #bae6fd; /* Lighter blue on hover */
-            transform: translateY(-1px);
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.08);
-        }
-        .body-type-description {
-            margin-top: 1rem;
-            padding: 1rem;
-            background-color: #f0f9ff; /* Even lighter blue */
-            border-left: 4px solid #38bdf8; /* Blue left border */
-            border-radius: 0.5rem;
-            color: #0369a1;
-            font-size: 0.95rem;
-        }
+        /* Removed body-type-buttons and body-type-description specific styles */
 
         @media (min-width: 640px) { /* Small screens and up */
             .input-section {
@@ -261,22 +236,16 @@
         <div class="button-group">
             <button id="searchBtn" class="btn btn-primary">검색</button>
             <button id="clearBtn" class="btn btn-secondary">초기화</button>
+            <button id="randomActorsBtn" class="btn btn-accent">오늘의 추천 배우</button>
         </div>
-
-        <div class="body-type-buttons">
-            <button class="body-type-btn" data-type="모래시계형">모래시계형</button>
-            <button class="body-type-btn" data-type="직사각형/일자형">직사각형/일자형</button>
-            <button class="body-type-btn" data-type="삼각형/하체 비만형">삼각형/하체 비만형</button>
-            <button class="body-type-btn" data-type="역삼각형/상체 비만형">역삼각형/상체 비만형</button>
-            <button class="body-type-btn" data-type="사과형/원형">사과형/원형</button>
-            <button class="body-type-btn" data-type="슬렌더형">슬렌더형</button>
-        </div>
-        <div id="bodyTypeDescription" class="body-type-description hidden"></div>
-
+        <p class="text-xs text-gray-500 text-center mt-2">
+            <small>이 검색 기능은 쿠팡 파트너스 활동의 일환으로, 검색 시 쿠팡으로 이동하며 일정액의 수수료를 제공받을 수 있습니다.</small><br>
+            <small>번거로우시겠지만, 이 작은 클릭이 사이트 운영에 큰 힘이 됩니다. 감사합니다!</small>
+        </p>
 
         <div id="resultsContainer" class="results-container">
             <!-- 검색 결과가 여기에 표시됩니다 -->
-            <p class="no-results">검색 조건을 입력하고 '검색' 버튼을 눌러주세요.</p>
+            <p class="no-results">검색 조건을 입력하고 '검색' 버튼을 누르거나, '오늘의 추천 배우'를 클릭해보세요.</p>
         </div>
     </div>
 
@@ -329,14 +298,14 @@
             { koreanName: "이치노세 아오이", englishName: "Aoi Ichinose", japaneseName: "一ノ瀬あおい", height: 154, bust: 85, waist: 58, hip: 88, link: "https://namu.wiki/w/이치노세_아오이" },
             { koreanName: "사사쿠라 아야", englishName: "Aya Sasakura", japaneseName: "笹倉彩", height: 167, bust: 88, waist: 63, hip: 89, link: "https://namu.wiki/w/사사쿠라_아야" },
             { koreanName: "이치노 아오이", englishName: "Aoi Ichino", japaneseName: "一乃あおい", height: 165, bust: 93, waist: 59, hip: 90, link: "https://namu.wiki/w/이치노_아오이" },
-            { koreanName: "하타노 유이", englishName: "Yui Hatano", japaneseName: "波多野結衣", height: 163, bust: 88, waist: 59, hip: 85, link: "https://namu.wiki/w/하타노_유이" },
+            { koreanName: "하타노 유이", englishName: "Yui Hatano", japaneseName: "波多野結衣", height: 163, bust: 88, waist: 59, hip: 94, link: "https://namu.wiki/w/하타노_유이" },
             { koreanName: "미즈하타 아사미", englishName: "Asami Mizuhata", japaneseName: "水端あさみ", height: 165, bust: 85, waist: 58, hip: 88, link: "https://namu.wiki/w/미즈하타_아사미" },
             { koreanName: "아유미 료", englishName: "Ryo Ayumi", japaneseName: "愛弓りょう", height: 167, bust: 90, waist: 58, hip: 85, link: "https://namu.wiki/w/아유미_료" },
             { koreanName: "키노시타 리리코", englishName: "Ririko Kinoshita", japaneseName: "木下凛々子", height: 165, bust: 90, waist: 62, hip: 89, link: "https://namu.wiki/w/키노시타_리리코" },
             { koreanName: "사야마 아이", englishName: "Ai Sayama", japaneseName: "佐山愛", height: 165, bust: 98, waist: 61, hip: 90, link: "https://namu.wiki/w/사야마_아이" },
             { koreanName: "하야마 사유리", englishName: "Sayuri Hayama", japaneseName: "葉山さゆり", height: 170, bust: 92, waist: 62, hip: 92, link: "https://namu.wiki/w/하야마_사유리" },
             { koreanName: "마츠시타 사에코", englishName: "Saeko Matsushita", japaneseName: "松下紗栄子", height: 165, bust: 88, waist: 57, hip: 86, link: "https://namu.wiki/w/마츠시타_사에코" },
-            { koreanName: "줄리아", englishName: "JULIA", japaneseName: "JULIA", height: 158, bust: 102, waist: 55, hip: 84, link: "https://namu.wiki/w/줄리아" },
+            { koreanName: "줄리아", englishName: "JULIA", japaneseName: "JULIA", height: 158, bust: 101, waist: 55, hip: 84, link: "https://namu.wiki/w/줄리아" },
             { koreanName: "아마미 츠바사", englishName: "Tsubasa Amami", japaneseName: "天海つばさ", height: 160, bust: 85, waist: 60, hip: 88, link: "https://namu.wiki/w/아마미_츠바사" },
             { koreanName: "오시카와 유리", englishName: "Yuri Oshikawa", japaneseName: "推川ゆうり", height: 165, bust: 93, waist: 60, hip: 90, link: "https://namu.wiki/w/오시카와_유리" },
             { koreanName: "후지 칸나", englishName: "Kanna Fuji", japaneseName: "藤かんな", height: 153, bust: 85, waist: 55, hip: 87, link: "https://namu.wiki/w/후지_칸나" },
@@ -360,16 +329,16 @@
             { koreanName: "미즈노 유카", englishName: "Yuuka Mizuno", japaneseName: "水野優香", height: 158, bust: 85, waist: 57, hip: 86, link: "https://namu.wiki/w/미즈노_유카" },
             { koreanName: "오키미야 나미", englishName: "Nami Okimiya", japaneseName: "沖宮那美", height: 165, bust: 87, waist: 56, hip: 90, link: "https://namu.wiki/w/오키미야_나미" },
             { koreanName: "코히나타 미유", englishName: "Miyu Kohinata", japaneseName: "小日向みゆう", height: 160, bust: 95, waist: 58, hip: 87, link: "https://namu.wiki/w/코히나타_미유" },
-            { koreanName: "미카미 유아", englishName: "Yua Mikami", japaneseName: "三上悠亜", height: 160, bust: 83, waist: 58, hip: 86, link: "https://namu.wiki/w/미카미_유아" },
-            { koreanName: "아오이 츠카사", englishName: "Tsukasa Aoi", japaneseName: "葵つかさ", height: 160, bust: 86, waist: 58, hip: 86, link: "https://namu.wiki/w/아오이_츠카사" },
+            { koreanName: "미카미 유아", englishName: "Yua Mikami", japaneseName: "三上悠亜", height: 159, bust: 84, waist: 58, hip: 88, link: "https://namu.wiki/w/미카미_유아" },
+            { koreanName: "아오이 츠카사", englishName: "Tsukasa Aoi", japaneseName: "葵つかさ", height: 163, bust: 88, waist: 58, hip: 86, link: "https://namu.wiki/w/아오이_츠카사" },
             { koreanName: "키즈나 아카리", englishName: "Akari Kizuna", japaneseName: "絆明里", height: 160, bust: 88, waist: 59, hip: 90, link: "https://namu.wiki/w/키즈나_아카리" },
             { koreanName: "아이자와 미나미", englishName: "Minami Aizawa", japaneseName: "相沢みなみ", height: 165, bust: 88, waist: 59, hip: 89, link: "https://namu.wiki/w/아이자와_미나미" },
             { koreanName: "사쿠라 모모", englishName: "Momo Sakura", japaneseName: "桜もも", height: 158, bust: 85, waist: 57, hip: 87, link: "https://namu.wiki/w/사쿠라_모모" },
             { koreanName: "미아 칼리파", englishName: "Mia Khalifa", japaneseName: "ミア・カリファ", height: 157, bust: 86, waist: 61, hip: 91, link: "https://namu.wiki/w/미아_칼리파" },
             { koreanName: "라나 로즈", englishName: "Lana Rhoades", japaneseName: "ラナ・ローズ", height: 162, bust: 89, waist: 63, hip: 94, link: "https://namu.wiki/w/ラナ_ローズ" },
-            { koreanName: "라일리 리드", englishName: "Riley Reid", japaneseName: "ライリー・リード", height: 163, bust: 89, waist: 61, hip: 89, link: "https://namu.wiki/w/ラ일리_リード" },
+            { koreanName: "라일리 리드", englishName: "Riley Reid", japaneseName: "ライリー・リード", height: 163, bust: 89, waist: 61, hip: 89, link: "https://namu.wiki/w/ライリー_リード" },
             { koreanName: "아벨라 데인저", englishName: "Abella Danger", japaneseName: "アベラ・デンジャー", height: 160, bust: 86, waist: 61, hip: 89, link: "https://namu.wiki/w/아벨라_데인저" },
-            { koreanName: "리사 앤", englishName: "Lisa Ann", japaneseName: "リサ・アン", height: 173, bust: 94, waist: 71, hip: 97, link: "https://namu.wiki/w/리사_앤" },
+            { koreanName: "리사 앤", englishName: "Lisa Ann", japaneseName: "リサ・アン", height: 173, bust: 94, waist: 71, hip: 97, link: "https://namu.wiki/w/リサ_アン" },
             { koreanName: "요시자와 아키호", englishName: "Akiho Yoshizawa", japaneseName: "吉沢明歩", height: 161, bust: 86, waist: 58, hip: 86, link: "https://namu.wiki/w/요시자와_아키호" },
             { koreanName: "하루히 모카", englishName: "Moka Haruhi", japaneseName: "春陽モカ", height: 158, bust: 90, waist: 57, hip: 85, link: "https://namu.wiki/w/하루히_모카" },
             { koreanName: "나기 히카루", englishName: "Hikaru Nagi", japaneseName: "凪ひかる", height: 162, bust: 105, waist: 59, hip: 88, link: "https://namu.wiki/w/나기_히카루" },
@@ -382,14 +351,14 @@
             { koreanName: "사츠키 나오", englishName: "Nao Satsuki", japaneseName: "彩月七緒", height: 164, bust: 92, waist: 59, hip: 89, link: "https://namu.wiki/w/사츠키_나오" },
             { koreanName: "나나하라 사유", englishName: "Sayu Nanahara", japaneseName: "七原さゆ", height: 162, bust: 90, waist: 59, hip: 89, link: "https://namu.wiki/w/나나하라_사유" },
             { koreanName: "카에데 후아", englishName: "Fua Kaede", japaneseName: "楓ふうあ", height: 170, bust: 93, waist: 59, hip: 88, link: "https://namu.wiki/w/카에데_후아" },
-            { koreanName: "모리 히나코", englishName: "Hinako Mori", japaneseName: "森日向子", height: 166, bust: 75, waist: 56, hip: 88, link: "https://namu.wiki/w/모리_히나코" },
+            { koreanName: "모리 히나코", englishName: "Hinako Mori", japaneseName: "森日向子", height: 166, bust: 85, waist: 56, hip: 88, link: "https://namu.wiki/w/모리_히나코" },
             { koreanName: "이토 마유키", englishName: "Mayuki Ito", japaneseName: "伊藤舞雪", height: 160, bust: 88, waist: 54, hip: 89, link: "https://namu.wiki/w/이토_마유키" },
             { koreanName: "진구지 나오", englishName: "Nao Jinguji", japaneseName: "神宮寺ナオ", height: 160, bust: 86, waist: 61, hip: 88, link: "https://namu.wiki/w/진구지_나오" },
             { koreanName: "혼조 스즈", englishName: "Suzu Honjo", japaneseName: "本庄鈴", height: 163, bust: 85, waist: 59, hip: 88, link: "https://namu.wiki/w/혼조_스즈" },
             { koreanName: "야기 나나", englishName: "Nana Yagi", japaneseName: "八木奈々", height: 156, bust: 82, waist: 56, hip: 86, link: "https://namu.wiki/w/야기_나나" },
             { koreanName: "시라카미 에미카", englishName: "Emika Shirakami", japaneseName: "白上咲花", height: 168, bust: 88, waist: 58, hip: 88, link: "https://namu.wiki/w/시라카미_에미카" },
             { koreanName: "카에데 카렌", englishName: "Karen Kaede", japaneseName: "楓カレン", height: 162, bust: 82, waist: 59, hip: 81, link: "https://namu.wiki/w/카에데_カレン" },
-            { koreanName: "아오이 이부키", englishName: "Ibuki Aoi", japaneseName: "葵いぶき", height: 162, bust: 80, waist: 59, hip: 90, link: "https://namu.wiki/w/아오이_이부키" },
+            { koreanName: "아오이 이부키", englishName: "Ibuki Aoi", japaneseName: "葵いぶき", height: 162, bust: 86, waist: 58, hip: 88, link: "https://namu.wiki/w/아오이_이부키" },
             { koreanName: "츠바사 마이", englishName: "Mai Tsubasa", japaneseName: "つばさ舞", height: 165, bust: 90, waist: 58, hip: 88, link: "https://namu.wiki/w/츠바사_마이" },
             { koreanName: "사카미치 미루", englishName: "Miru Sakamichi", japaneseName: "坂道みる", height: 157, bust: 82, waist: 54, hip: 84, link: "https://namu.wiki/w/사카미치_미루" },
             { koreanName: "스즈모리 레무", englishName: "Remu Suzumori", japaneseName: "涼森れむ", height: 160, bust: 87, waist: 58, hip: 85, link: "https://namu.wiki/w/스즈모리_레무" },
@@ -399,22 +368,22 @@
             { koreanName: "미타니 아카네", englishName: "Akari Mitani", japaneseName: "美谷朱音", height: 166, bust: 83, waist: 58, hip: 86, link: "https://namu.wiki/w/미타니_아카네" },
             { koreanName: "미야시타 레나", englishName: "Rena Miyashita", japaneseName: "宮下玲奈", height: 162, bust: 83, waist: 57, hip: 85, link: "https://namu.wiki/w/미야시타_レナ" },
             { koreanName: "안자이 라라", englishName: "Rara Anzai", japaneseName: "安齋らら", height: 161, bust: 105, waist: 58, hip: 89, link: "https://namu.wiki/w/안자이_라라" },
-            { koreanName: "이시카와 미오", englishName: "Mio Ishikawa", japaneseName: "石川澪", height: 158, bust: 82, waist: 58, hip: 86, link: "https://namu.wiki/w/이시카와_미오" },
+            { koreanName: "이시카와 미오", englishName: "Mio Ishikawa", japaneseName: "石川澪", height: 169, bust: 80, waist: 60, hip: 87, link: "https://namu.wiki/w/이시카와_ミオ" },
             { koreanName: "아오조라 히카리", englishName: "Hikari Aozora", japaneseName: "青空ひかり", height: 153, bust: 85, waist: 58, hip: 83, link: "https://namu.wiki/w/아오조라_히카리" },
             { koreanName: "카미키 레이", englishName: "Rei Kamiki", japaneseName: "神木麗", height: 169, bust: 95, waist: 60, hip: 85, link: "https://namu.wiki/w/카미키_레이" },
             { koreanName: "카와키타 사이카", englishName: "Saika Kawakita", japaneseName: "河北彩伽", height: 169, bust: 88, waist: 59, hip: 89, link: "https://namu.wiki/w/카와키타_사이카" },
-            { koreanName: "아카리 츠무기", englishName: "Tsumugi Akari", japaneseName: "明里つむぎ", height: 155, bust: 80, waist: 58, hip: 83, link: "https://namu.wiki/w/아카리_츠무기" },
+            { koreanName: "아카리 츠무기", englishName: "Tsumugi Akari", japaneseName: "明里つむぎ", height: 157, bust: 80, waist: 58, hip: 83, link: "https://namu.wiki/w/아카리_츠무기" },
             { koreanName: "아라타 아리나", englishName: "Arina Arata", japaneseName: "アラタアリナ", height: 167, bust: 84, waist: 56, hip: 83, link: "https://namu.wiki/w/아라타_아리나" },
-            { koreanName: "미야니시 히카루", englishName: "Miyanishi Hikaru", japaneseName: "宮西ひかる", height: 161, bust: 88, waist: 61, hip: 86, link: "https://namu.wiki/w/미야니시_히카루" },
-            { koreanName: "사키노 미즈키", englishName: "Mizuki Sakino", japaneseName: "サキノミズキ", height: 165, bust: 84, waist: 59, hip: 87, link: "https://namu.wiki/w/사키노_미즈키" },
+            { koreanName: "미야니시 히카루", englishName: "Hikaru Miyanishi", japaneseName: "宮西ひかる", height: 161, bust: 88, waist: 61, hip: 86, link: "https://namu.wiki/w/미야니시_히카루" },
+            { koreanName: "사키노 미즈키", englishName: "Mizuki Sakino", japaneseName: "サキノミズキ", height: 165, bust: 84, waist: 59, hip: 87, link: "https://namu.wiki/w/사키노_ミズキ" },
             { koreanName: "히로세 히나", englishName: "Hina Hirose", japaneseName: "広瀬ひな", height: 153, bust: 92, waist: 56, hip: 86, link: "https://namu.wiki/w/히로세_히나" },
             { koreanName: "쿠노 히나노", englishName: "Hinano Kuno", japaneseName: "久野ひなの", height: 157, bust: 90, waist: 60, hip: 88, link: "https://namu.wiki/w/쿠노_히나노" },
             { koreanName: "카미사카 메이", englishName: "Mei Kamisaka", japaneseName: "神坂めい", height: 153, bust: 85, waist: 57, hip: 88, link: "https://namu.wiki/w/카미사카_메이" },
             { koreanName: "시라하나 코", englishName: "Kou Shirahana", japaneseName: "白花こう", height: 166, bust: 82, waist: 59, hip: 90, link: "https://namu.wiki/w/시라하나_코" },
-            { koreanName: "코이부치 모모나", englishName: "Momona Koibuchi", japaneseName: "恋渕ももな", height: 161, bust: 103, waist: 65, hip: 92, link: "https://namu.wiki/w/코이부치_모모나" },
+            { koreanName: "코이부치 모모나", englishName: "Momona Koibuchi", japaneseName: "恋渕ももな", height: 161, bust: 110, waist: 65, hip: 92, link: "https://namu.wiki/w/코이부치_모모나" },
             { koreanName: "아오타 유카", englishName: "Yuka Aota", japaneseName: "青田ゆか", height: 169, bust: 90, waist: 62, hip: 86, link: "https://namu.wiki/w/아오타_유카" },
             { koreanName: "호리사와 마유", englishName: "Mayu Horisawa", japaneseName: "堀沢まゆ", height: 155, bust: 87, waist: 58, hip: 85, link: "https://namu.wiki/w/호리사와_마유" },
-            { koreanName: "사쿠라바 리오나", englishName: "Riona Sakuraba", japaneseName: "桜庭リオン", height: 156, bust: 82, waist: 60, hip: 90, link: "https://namu.wiki/w/사쿠라바_리오나" },
+            { koreanName: "사쿠라바 리오나", englishName: "Riona Sakuraba", japaneseName: "桜庭リオン", height: 156, bust: 82, waist: 60, hip: 90, link: "https://namu.wiki/w/사쿠라바_リオナ" },
             { koreanName: "카나미 리온", englishName: "Rion Kanami", japaneseName: "奏美リオン", height: 155, bust: 83, waist: 59, hip: 87, link: "https://namu.wiki/w/카나미_리온" },
             { koreanName: "야마테 리아", englishName: "Ria Yamate", japaneseName: "山手りあ", height: 170, bust: 99, waist: 58, hip: 88, link: "https://namu.wiki/w/야마테_리아" },
             { koreanName: "오시마 아리아", englishName: "Aria Oshima", japaneseName: "大島あかり", height: 150, bust: 93, waist: 55, hip: 88, link: "https://namu.wiki/w/오시마_아리아" },
@@ -438,4 +407,286 @@
             { koreanName: "치토세 리아", englishName: "Ria Chitose", japaneseName: "千歳りあ", height: 160, bust: 110, waist: 65, hip: 102, link: "https://namu.wiki/w/치토세_리아" },
             { koreanName: "미나미 마도카", englishName: "Madoka Minami", japaneseName: "南まどか", height: 152, bust: 100, waist: 60, hip: 90, link: "https://namu.wiki/w/미나미_마도카" },
             { koreanName: "유우키 노조미", englishName: "Nozomi Yuuki", japaneseName: "優木望", height: 156, bust: 98, waist: 58, hip: 86, link: "https://namu.wiki/w/유우키_노조미" },
-            { koreanName: "아리사카 마요이", englishName: "Mayoi Arisaka", japaneseName: "有坂まよい", height: 152, bust: 89, waist: 
+            { koreanName: "아리사카 마요이", englishName: "Mayoi Arisaka", japaneseName: "有坂まよい", height: 152, bust: 89, waist: 53, hip: 88, link: "https://namu.wiki/w/아리사카_마요이" },
+            { koreanName: "모모지리 카나메", englishName: "Kaname Momojiri", japaneseName: "桃尻かなめ", height: 152, bust: 90, waist: 56, hip: 86, link: "https://namu.wiki/w/모모지리_카나메" },
+            { koreanName: "츠키시로 란", englishName: "Ran Tsukishiro", japaneseName: "月城らん", height: 160, bust: 85, waist: 58, hip: 84, link: "https://namu.wiki/w/츠키시로_란" },
+            { koreanName: "오토시로 사야카", englishName: "Sayaka Otoshiro", japaneseName: "音白さやか", height: 169, bust: 85, waist: 58, hip: 86, link: "https://namu.wiki/w/오토시로_사야카" },
+            { koreanName: "카시와기 아미", englishName: "Ami Kashiwagi", japaneseName: "柏木あみ", height: 156, bust: 87, waist: 60, hip: 89, link: "https://namu.wiki/w/카시와기_아미" },
+            { koreanName: "하시모토 치나츠", englishName: "Chinatsu Hashimoto", japaneseName: "橋本ちなつ", height: 157, bust: 87, waist: 56, hip: 87, link: "https://namu.wiki/w/하시모토_치나츠" },
+            { koreanName: "토요사키 미사토", englishName: "Misato Toyosaki", japaneseName: "豊崎美里", height: 158, bust: 88, waist: 59, hip: 88, link: "https://namu.wiki/w/토요사키_미사토" },
+            { koreanName: "야노 카논", englishName: "Kanon Yano", japaneseName: "矢野かのん", height: 170, bust: 90, waist: 54, hip: 86, link: "https://namu.wiki/w/야노_카논" },
+            { koreanName: "츠바키 리카", englishName: "Rika Tsubaki", japaneseName: "椿りか", height: 157, bust: 88, waist: 55, hip: 84, link: "https://namu.wiki/w/츠바키_리카" },
+            { koreanName: "하토리 라무", englishName: "Ramu Hatori", japaneseName: "羽鳥らむ", height: 153, bust: 82, waist: 58, hip: 83, link: "https://namu.wiki/w/하토리_라무" },
+            { koreanName: "카가미 사라", englishName: "Sara Kagami", japaneseName: "加賀美さら", height: 160, bust: 82, waist: 58, hip: 84, link: "https://namu.wiki/w/카가미_사라" },
+            { koreanName: "타키자와 라이라", englishName: "Raira Takizawa", japaneseName: "滝澤らいら", height: 165, bust: 85, waist: 58, hip: 88, link: "https://namu.wiki/w/타키자와_라이라" },
+            { koreanName: "이시하라 노조미", englishName: "Nozomi Ishihara", japaneseName: "石原希望", height: 158, bust: 90, waist: 58, hip: 90, link: "https://namu.wiki/w/이시하라_노조미" },
+            { koreanName: "오토하 네이로", englishName: "Neiro Otoha", japaneseName: "音羽ねいろ", height: 159, bust: 90, waist: 58, hip: 87, link: "https://namu.wiki/w/오토하_네이로" },
+            { koreanName: "아사히나 나나세", englishName: "Nanase Asahina", japaneseName: "朝比奈ななせ", height: 157, bust: 83, waist: 60, hip: 84, link: "https://namu.wiki/w/아사히나_나나세" },
+            { koreanName: "카나에 유리아", englishName: "Yuria Kanae", japaneseName: "奏恵ゆりあ", height: 158, bust: 96, waist: 59, hip: 90, link: "https://namu.wiki/w/카나에_유리아" },
+            { koreanName: "토죠 나츠", englishName: "Natsu Tojo", japaneseName: "東條なつ", height: 156, bust: 78, waist: 55, hip: 85, link: "https://namu.wiki/w/토죠_나츠" },
+            { koreanName: "나기사 마유", englishName: "Mayu Nagisa", japaneseName: "渚まゆ", height: 163, bust: 85, waist: 54, hip: 86, link: "https://namu.wiki/w/나기사_마유" },
+            { koreanName: "요네즈 히비키", englishName: "Hibiki Yonezu", japaneseName: "米津ひびき", height: 163, bust: 86, waist: 57, hip: 85, link: "https://namu.wiki/w/요네즈_히비키" },
+            { koreanName: "츠키모리 유노", englishName: "Yuno Tsukimori", japaneseName: "月守ゆの", height: 169, bust: 93, waist: 62, hip: 91, link: "https://namu.wiki/w/츠키모리_유노" },
+            { koreanName: "미야조노 코토네", englishName: "Kotone Miyazono", japaneseName: "宮園琴音", height: 175, bust: 93, waist: 57, hip: 89, link: "https://namu.wiki/w/미야조노_코토네" },
+            { koreanName: "사토 시온", englishName: "Shion Sato", japaneseName: "佐藤しおん", height: 164, bust: 92, waist: 58, hip: 86, link: "https://namu.wiki/w/사토_시온" },
+            { koreanName: "카타세 치사", englishName: "Chisa Katase", japaneseName: "片瀬ちさ", height: 153, bust: 88, waist: 60, hip: 84, link: "https://namu.wiki/w/카타세_치사" },
+            { koreanName: "나가하라 나유", englishName: "Nayu Nagahara", japaneseName: "長原なゆ", height: 157, bust: 89, waist: 59, hip: 87, link: "https://namu.wiki/w/나가하라_나유" },
+            { koreanName: "우라라카 우라라", englishName: "Urara Uraraka", japaneseName: "うららかうらら", height: 157, bust: 85, waist: 58, hip: 82, link: "https://namu.wiki/w/우라라카_우라라" },
+            { koreanName: "사노 유이나", englishName: "Yuina Sano", japaneseName: "佐野ゆいな", height: 158, bust: 80, waist: 54, hip: 83, link: "https://namu.wiki/w/사노_유이나" },
+            { koreanName: "카와구치 나츠나", englishName: "Natsuna Kawaguchi", japaneseName: "川口なつな", height: 149, bust: 85, waist: 58, hip: 85, link: "https://namu.wiki/w/카와구치_나츠나" },
+            { koreanName: "키타이 아미", englishName: "Ami Kitai", japaneseName: "北居あみ", height: 157, bust: 90, waist: 58, hip: 85, link: "https://namu.wiki/w/키타이_아미" },
+            { koreanName: "킷테 루이", englishName: "Rui Kitte", japaneseName: "橘てぃあ", height: 158, bust: 85, waist: 60, hip: 89, link: "https://namu.wiki/w/킷테_루이" },
+            { koreanName: "츠지사와 모모", englishName: "Momo Tsujisawa", japaneseName: "辻沢もも", height: 165, bust: 84, waist: 58, hip: 85, link: "https://namu.wiki/w/츠지사와_모모" },
+            { koreanName: "타카기 히나", englishName: "Hina Takagi", japaneseName: "高木ひな", height: 160, bust: 83, waist: 57, hip: 85, link: "https://namu.wiki/w/타카기_히나" },
+            { koreanName: "마이사키 루리", englishName: "Ruri Maisaki", japaneseName: "舞咲るり", height: 164, bust: 88, waist: 59, hip: 86, link: "https://namu.wiki/w/마이사키_루리" },
+            { koreanName: "히나타 후와리", englishName: "Huwari Hinata", japaneseName: "日向ふわリ", height: 155, bust: 100, waist: 65, hip: 98, link: "https://namu.wiki/w/히나타_후와리" },
+            { koreanName: "모리사와 카나", englishName: "Kana Morisawa", japaneseName: "森沢かな", height: 160, bust: 86, waist: 59, hip: 86, link: "https://namu.wiki/w/모리사와_카나" },
+            { koreanName: "유즈리하 카렌", englishName: "Karen Yuzuriha", japaneseName: "楪カレン", height: 148, bust: 96, waist: 58, hip: 85, link: "https://namu.wiki/w/유즈리하_카렌" },
+            { koreanName: "코미나토 요츠바", englishName: "Yotsuba Kominato", japaneseName: "小湊よつ葉", height: 154, bust: 83, waist: 59, hip: 80, link: "https://namu.wiki/w/코미나토_요츠바" },
+            { koreanName: "오하나 논", englishName: "Non Ohana", japaneseName: "小花ノン", height: 157, bust: 86, waist: 60, hip: 88, link: "https://namu.wiki/w/오하나_논" },
+            { koreanName: "미즈키 야요이", englishName: "Yayoi Mizuki", japaneseName: "水樹やよい", height: 157, bust: 89, waist: 60, hip: 94, link: "https://namu.wiki/w/미즈키_야요이" },
+            { koreanName: "쿠라모토 스미레", englishName: "Sumire Kuramoto", japaneseName: "倉本すみれ", height: 153, bust: 85, waist: 57, hip: 85, link: "https://namu.wiki/w/쿠라모토_스미레" },
+            { koreanName: "호시노 리코", englishName: "Riko Hoshino", japaneseName: "星乃りこ", height: 152, bust: 84, waist: 57, hip: 85, link: "https://namu.wiki/w/호시노_리코" },
+            { koreanName: "쿠로카와 스미레", englishName: "Sumire Kurokawa", japaneseName: "黒川すみれ", height: 167, bust: 88, waist: 56, hip: 88, link: "https://namu.wiki/w/쿠로카와_스미레" },
+            { koreanName: "사쿠라 마나", englishName: "Mana Sakura", japaneseName: "佐倉まな", height: 160, bust: 89, waist: 58, hip: 89, link: "https://namu.wiki/w/사쿠라_마나" },
+            { koreanName: "아마카와 소라", englishName: "Sora Amakawa", japaneseName: "天川そら", height: 164, bust: 87, waist: 56, hip: 86, link: "https://namu.wiki/w/아마카와_소라" },
+            { koreanName: "오츠 앨리스", englishName: "Alice Otsu", japaneseName: "大津アリス", height: 161, bust: 90, waist: 60, hip: 99, link: "https://namu.wiki/w/오츠_앨리스" },
+            { koreanName: "니이무라 아카리", englishName: "Akari Niimura", japaneseName: "新村あかり", height: 153, bust: 86, waist: 58, hip: 88, link: "https://namu.wiki/w/니이무라_아카리" },
+            { koreanName: "요시네 유리아", englishName: "Yuria Yoshine", japaneseName: "吉根ゆりあ", height: 153, bust: 111, waist: 61, hip: 95, link: "https://namu.wiki/w/요시네_유리아" },
+            { koreanName: "야마기시 아이카", englishName: "Aika Yamagishi", japaneseName: "山岸逢花", height: 161, bust: 82, waist: 59, hip: 86, link: "https://namu.wiki/w/야마기시_아이카" },
+            { koreanName: "미소노 와카", englishName: "Waka Misono", japaneseName: "御園和香", height: 155, bust: 100, waist: 60, hip: 91, link: "https://namu.wiki/w/미소노_와카" },
+            { koreanName: "카시와기 코나츠", englishName: "Konatsu Kashiwagi", japaneseName: "柏木こなつ", height: 155, bust: 86, waist: 59, hip: 88, link: "https://namu.wiki/w/카시와기_코나츠" },
+            { koreanName: "나나 타기", englishName: "Nana Tagi", japaneseName: "奈々多岐", height: 153, bust: 85, waist: 57, hip: 83, link: "https://namu.wiki/w/나나_타기" },
+            { koreanName: "시이나 유나", englishName: "Yuna Shiina", japaneseName: "椎名ゆな", height: 158, bust: 88, waist: 58, hip: 92, link: "https://namu.wiki/w/시이나_유나" },
+            { koreanName: "유이 K 나가사", englishName: "Yui K Nagasa", japaneseName: "唯K長澤", height: 151, bust: 90, waist: 55, hip: 88, link: "https://namu.wiki/w/유이_K_나가사" },
+            { koreanName: "히나리 키노시타", englishName: "Hinari Kinoshita", japaneseName: "日向り木下", height: 169, bust: 88, waist: 57, hip: 88, link: "https://namu.wiki/w/히나리_키노시타" },
+            { koreanName: "와시오 메이", englishName: "Mei Washio", japaneseName: "鷲尾めい", height: 165, bust: 104, waist: 59, hip: 89, link: "https://namu.wiki/w/와시오_메이" },
+            { koreanName: "사이토 아미리", englishName: "Amiri Saito", japaneseName: "斉藤あみり", height: 161, bust: 84, waist: 52, hip: 81, link: "https://namu.wiki/w/사이토_아미리" },
+            { koreanName: "모리 히나코", englishName: "Hinako Mori", japaneseName: "森日向子", height: 166, bust: 85, waist: 56, hip: 88, link: "https://namu.wiki/w/모리_히나코" },
+            { koreanName: "시노다 유우", englishName: "Yuu Shinoda", japaneseName: "篠田ゆう", height: 155, bust: 88, waist: 60, hip: 87, link: "https://namu.wiki/w/시노다_유우" },
+            { koreanName: "야츠가케 우미", englishName: "Umi Yatsugake", japaneseName: "八ツ掛うみ", height: 160, bust: 80, waist: 57, hip: 85, link: "https://namu.wiki/w/야츠가케_우미" },
+            { koreanName: "토키타 아미", englishName: "Ami Tokita", japaneseName: "時田あみ", height: 160, bust: 83, waist: 56, hip: 86, link: "https://namu.wiki/w/토키타_아미" },
+            { koreanName: "아야세 코코로", englishName: "Kokoro Ayase", japaneseName: "綾瀬ここ", height: 160, bust: 94, waist: 62, hip: 90, link: "https://namu.wiki/w/아야세_코코로" },
+            { koreanName: "미토 카나", englishName: "Kana Mito", japaneseName: "水戸かな", height: 160, bust: 83, waist: 60, hip: 85, link: "https://namu.wiki/w/미토_카나" },
+            { koreanName: "카가리 마이", englishName: "Mai Kagari", japaneseName: "篝まい", height: 160, bust: 77, waist: 60, hip: 83, link: "https://namu.wiki/w/카가리_마이" },
+            { koreanName: "쿠사카베 카나", englishName: "Kana Kusakabe", japaneseName: "日下部加奈", height: 160, bust: 95, waist: 60, hip: 88, link: "https://namu.wiki/w/쿠사카베_카나" },
+            { koreanName: "오쿠다 사키", englishName: "Saki Okuda", japaneseName: "奥田咲", height: 148, bust: 92, waist: 55, hip: 80, link: "https://namu.wiki/w/오쿠다_사키" },
+            { koreanName: "하마사키 마오", englishName: "Mao Hamasaki", japaneseName: "浜崎真緒", height: 165, bust: 85, waist: 59, hip: 84, link: "https://namu.wiki/w/하마사키_마오" },
+            { koreanName: "하치미츠 린", englishName: "Rin Hachimitsu", japaneseName: "蜂蜜りん", height: 166, bust: 95, waist: 55, hip: 90, link: "https://namu.wiki/w/하치미츠_린" },
+            { koreanName: "오노 릿카", englishName: "Rikka Ono", japaneseName: "小野六花", height: 148, bust: 81, waist: 58, hip: 82, link: "https://namu.wiki/w/오노_릿카" },
+            { koreanName: "타카라다 모나미", englishName: "Monami Takarada", japaneseName: "宝田もなみ", height: 160, bust: 100, waist: 57, hip: 85, link: "https://namu.wiki/w/타카라다_모나미" },
+            { koreanName: "아즈사 히카리", englishName: "Hikari Azusa", japaneseName: "梓ひかり", height: 155, bust: 89, waist: 54, hip: 86, link: "https://namu.wiki/w/아즈사_히카리" },
+            { koreanName: "나기사 미츠키", englishName: "Mitsuki Nagisa", japaneseName: "渚みつき", height: 155, bust: 83, waist: 58, hip: 86, link: "https://namu.wiki/w/나기사_미츠키" },
+            { koreanName: "미사키 칸나", englishName: "Kanna Misaki", japaneseName: "岬かんな", height: 150, bust: 83, waist: 57, hip: 87, link: "https://namu.wiki/w/미사키_칸나" },
+            { koreanName: "나카야마 유미카", englishName: "Yumika Nakayama", japaneseName: "中山ゆみか", height: 150, bust: 93, waist: 60, hip: 87, link: "https://namu.wiki/w/나카야마_유미카" },
+            { koreanName: "츠쿠모 요루", englishName: "Yoru Tsukumo", japaneseName: "九十九夜", height: 153, bust: 88, waist: 58, hip: 82, link: "https://namu.wiki/w/츠쿠모_요루" },
+            { koreanName: "마루이 모에카", englishName: "Moeka Marui", japaneseName: "丸井もえか", height: 153, bust: 75, waist: 58, hip: 85, link: "https://namu.wiki/w/마루이_모에카" },
+            { koreanName: "나츠모리 리리", englishName: "Riri Natsumori", japaneseName: "夏森りり", height: 161, bust: 85, waist: 59, hip: 86, link: "https://namu.wiki/w/나츠모리_리리" },
+            { koreanName: "하루나 히나", englishName: "Hina Haruna", japaneseName: "春菜ひな", height: 162, bust: 108, waist: 58, hip: 85, link: "https://namu.wiki/w/하루나_히나" },
+            { koreanName: "우에하 아야", englishName: "Aya Ueha", japaneseName: "上原亜衣", height: 155, bust: 83, waist: 57, hip: 79, link: "https://namu.wiki/w/우에하_아야" },
+            { koreanName: "아마미야 카난", englishName: "Kanan Amamiya", japaneseName: "天宮かのん", height: 155, bust: 88, waist: 57, hip: 86, link: "https://namu.wiki/w/아마미야_카난" },
+            { koreanName: "미호 나나", englishName: "Nana Miho", japaneseName: "美穂七", height: 156, bust: 86, waist: 56, hip: 85, link: "https://namu.wiki/w/미호_나나" },
+            { koreanName: "카구라 모모카", englishName: "Momoka Kagura", japaneseName: "神楽ももか", height: 156, bust: 108, waist: 59, hip: 93, link: "https://namu.wiki/w/카구라_모모카" }
+        ];
+
+        // HTML 요소 참조
+        const minHeightInput = document.getElementById('minHeight');
+        const maxHeightInput = document.getElementById('maxHeight');
+        const minBustInput = document.getElementById('minBust');
+        const maxBustInput = document.getElementById('maxBust');
+        const minWaistInput = document.getElementById('minWaist');
+        const maxWaistInput = document.getElementById('maxWaist');
+        const minHipInput = document.getElementById('minHip');
+        const maxHipInput = document.getElementById('maxHip');
+        const searchBtn = document.getElementById('searchBtn');
+        const clearBtn = document.getElementById('clearBtn');
+        const randomActorsBtn = document.getElementById('randomActorsBtn'); // 새로운 버튼 참조
+        const resultsContainer = document.getElementById('resultsContainer');
+        // bodyTypeDescriptionDiv는 이제 사용되지 않으므로 삭제
+        // const bodyTypeDescriptionDiv = document.getElementById('bodyTypeDescription');
+
+        // 체형별 특징 설명 (이제 사용되지 않지만, classifyBodyType 함수는 유지)
+        const bodyTypeDescriptions = {
+            "모래시계형": "가슴 둘레와 엉덩이 둘레가 비슷하고, 허리 둘레가 이들보다 훨씬 잘록한 형태입니다. 가장 이상적인 여성 체형으로 여겨지기도 합니다.",
+            "직사각형/일자형": "가슴, 허리, 엉덩이 둘레가 비교적 비슷하여 허리선이 뚜렷하게 잘록하지 않은 형태입니다. 전체적으로 직선적인 실루엣을 가집니다.",
+            "삼각형/하체 비만형": "엉덩이 둘레가 가슴 둘레보다 넓고, 허리는 비교적 잘록한 형태입니다. 하체에 볼륨감이 집중되어 있습니다.",
+            "역삼각형/상체 비만형": "가슴 둘레나 어깨 너비가 엉덩이 둘레보다 넓고, 하체는 비교적 좁은 형태입니다. 상체에 볼륨감이 집중되어 있습니다.",
+            "사과형/원형": "허리 둘레가 가장 넓거나 가슴, 엉덩이 둘레와 비슷하며, 전체적으로 둥근 실루엣을 가집니다. 복부 쪽에 살이 집중되는 경향이 있습니다.",
+            "슬렌더형": "전체적으로 가슴, 허리, 엉덩이 모든 치수가 작고 마른 형태입니다. 허리선이 뚜렷하지 않은 일자형에 가깝지만, 전체적인 사이즈가 작다는 점에서 구분됩니다.",
+            "정보 부족": "신체 사이즈 정보가 부족하여 체형을 분류할 수 없습니다."
+        };
+
+        /**
+         * 입력된 값이 유효한 숫자인지 확인하고, 유효하지 않으면 기본값을 반환합니다.
+         * @param {string} value - 입력 필드의 값
+         * @param {number|null} defaultValue - 기본값 (null이면 해당 조건 무시)
+         * @returns {number|null} 유효한 숫자 또는 기본값
+         */
+        function getNumericValue(value, defaultValue = null) {
+            const num = parseFloat(value);
+            return isNaN(num) ? defaultValue : num;
+        }
+
+        /**
+         * 배우의 쓰리사이즈를 기반으로 체형을 분류하는 함수
+         * 이 함수는 배우 카드에 체형을 표시하기 위해 계속 사용됩니다.
+         * @param {object} actor - 배우 객체 { bust, waist, hip }
+         * @returns {string} 분류된 체형 이름
+         */
+        function classifyBodyType(actor) {
+            const { bust, waist, hip } = actor;
+
+            // 1. 필수 정보가 없는 경우
+            if (bust === null || waist === null || hip === null || bust === 0 || waist === 0 || hip === 0) {
+                return "정보 부족";
+            }
+
+            // 비율 계산
+            const waistToBustRatio = waist / bust;
+            const waistToHipRatio = waist / hip;
+
+            // 2. 슬렌더형 (Slender): 전반적으로 치수가 작은 경우
+            if (bust < 88 && waist < 60 && hip < 90) {
+                if (!(waistToBustRatio < 0.70 && waistToHipRatio < 0.70)) {
+                    return "슬렌더형";
+                }
+            }
+
+            // 3. 모래시계형 (Hourglass): 허리가 가슴과 엉덩이보다 훨씬 잘록하고, 가슴과 엉덩이 사이즈가 비슷함
+            if (waistToBustRatio < 0.75 && waistToHipRatio < 0.75 && Math.abs(bust - hip) <= 2.5) {
+                return "모래시계형";
+            }
+
+            // 4. 역삼각형/상체 비만형 (Inverted Triangle): 가슴이 엉덩이보다 훨씬 큼
+            if (bust > hip + 5) {
+                return "역삼각형/상체 비만형";
+            }
+
+            // 5. 삼각형/하체 비만형 (Pear/Triangle): 엉덩이가 가슴보다 훨씬 큼
+            if (hip > bust + 5) {
+                return "삼각형/하체 비만형";
+            }
+            
+            // 6. 사과형/원형 (Apple/Round): 허리가 가슴이나 엉덩이보다 크거나 비슷하며, 전체적으로 둥근 느낌
+            if (waist >= bust - 2 && waist >= hip - 2) {
+                if (waist >= Math.max(bust, hip) - 2) {
+                    return "사과형/원형";
+                }
+            }
+
+            // 7. 직사각형/일자형 (Rectangle/Straight): 가슴, 허리, 엉덩이 둘레가 비교적 비슷
+            if (waistToBustRatio >= 0.75 && waistToHipRatio >= 0.75 && Math.abs(bust - hip) <= 5) {
+                return "직사각형/일자형";
+            }
+            
+            return "기타"; // 위의 어떤 유형에도 속하지 않는 경우 (예외 처리)
+        }
+
+
+        /**
+         * 배우 데이터를 필터링하고 결과를 표시하는 함수 (수치 검색 전용)
+         */
+        function searchActors() {
+            // 쿠팡 링크 새 탭으로 열기 (실제 쿠팡 제휴 링크로 변경 필요)
+            window.open('YOUR_COUPANG_AFFILIATE_LINK_HERE', '_blank');
+
+            const minH = getNumericValue(minHeightInput.value);
+            const maxH = getNumericValue(maxHeightInput.value);
+            const minB = getNumericValue(minBustInput.value);
+            const maxB = getNumericValue(maxBustInput.value);
+            const minW = getNumericValue(minWaistInput.value);
+            const maxW = getNumericValue(maxWaistInput.value);
+            const minP = getNumericValue(minHipInput.value);
+            const maxP = getNumericValue(maxHipInput.value);
+
+            const filteredActors = actors.filter(actor => {
+                // 신장 필터링
+                const heightMatch = (minH === null || actor.height === null || actor.height >= minH) &&
+                                    (maxH === null || actor.height === null || actor.height <= maxH);
+
+                // 가슴 필터링
+                const bustMatch = (minB === null || actor.bust === null || actor.bust >= minB) &&
+                                  (maxB === null || actor.bust === null || actor.bust <= maxB);
+
+                // 허리 필터링
+                const waistMatch = (minW === null || actor.waist === null || actor.waist >= minW) &&
+                                   (maxW === null || actor.waist === null || actor.waist <= maxW);
+
+                // 엉덩이 필터링
+                const hipMatch = (minP === null || actor.hip === null || actor.hip >= minP) &&
+                                 (maxP === null || actor.hip === null || actor.hip <= maxP);
+
+                return heightMatch && bustMatch && waistMatch && hipMatch;
+            });
+
+            displayActors(filteredActors);
+        }
+
+        /**
+         * 랜덤 배우를 선택하여 표시하는 함수
+         */
+        function displayRandomActors() {
+            clearInputs(); // 입력 필드 및 기존 결과 초기화
+
+            const shuffledActors = [...actors].sort(() => 0.5 - Math.random()); // 배우 배열 섞기
+            const randomFiveActors = shuffledActors.slice(0, 5); // 상위 5명 선택
+
+            displayActors(randomFiveActors);
+        }
+
+        /**
+         * 배우 목록을 화면에 표시하는 공통 함수
+         * @param {Array} actorsToDisplay - 표시할 배우 객체 배열
+         */
+        function displayActors(actorsToDisplay) {
+            resultsContainer.innerHTML = ''; // 기존 결과 지우기
+
+            if (actorsToDisplay.length > 0) {
+                actorsToDisplay.forEach(actor => {
+                    const actorCard = document.createElement('div');
+                    actorCard.className = 'actor-card';
+                    const bodyType = classifyBodyType(actor); // 체형 분류
+                    actorCard.innerHTML = `
+                        <h3>${actor.koreanName} (${actor.englishName || '정보없음'} / ${actor.japaneseName || '정보없음'})</h3>
+                        <p><strong>신장:</strong> ${actor.height !== null ? actor.height + ' cm' : '정보없음'}</p>
+                        <p><strong>가슴:</strong> ${actor.bust !== null ? actor.bust + ' cm' : '정보없음'}</p>
+                        <p><strong>허리:</strong> ${actor.waist !== null ? actor.waist + ' cm' : '정보없음'}</p>
+                        <p><strong>엉덩이:</strong> ${actor.hip !== null ? actor.hip + ' cm' : '정보없음'}</p>
+                        <p><strong>체형:</strong> ${bodyType}</p>
+                    `;
+                    // '자세히 보기' 링크를 삭제했습니다.
+                    // <a href="${actor.link}" target="_blank" rel="noopener noreferrer">자세히 보기</a>
+                    resultsContainer.appendChild(actorCard);
+                });
+            } else {
+                resultsContainer.innerHTML = '<p class="no-results">조건에 맞는 배우를 찾을 수 없습니다.</p>';
+            }
+        }
+
+        /**
+         * 입력 필드를 초기화하고 결과를 지우는 함수
+         */
+        function clearInputs() {
+            minHeightInput.value = '';
+            maxHeightInput.value = '';
+            minBustInput.value = '';
+            maxBustInput.value = '';
+            minWaistInput.value = '';
+            maxWaistInput.value = '';
+            minHipInput.value = '';
+            maxHipInput.value = '';
+            resultsContainer.innerHTML = '<p class="no-results">검색 조건을 입력하고 \'검색\' 버튼을 누르거나, \'오늘의 추천 배우\'를 클릭해보세요.</p>';
+            // bodyTypeDescriptionDiv는 이제 사용되지 않으므로 제거
+            // bodyTypeDescriptionDiv.classList.add('hidden');
+        }
+
+        // 이벤트 리스너 연결
+        searchBtn.addEventListener('click', searchActors); // 수치 검색
+        clearBtn.addEventListener('click', clearInputs); // 초기화
+        randomActorsBtn.addEventListener('click', displayRandomActors); // 오늘의 추천 배우
+
+        // 초기 로드 시 검색 필드를 비우고 안내 메시지 표시
+        window.onload = clearInputs;
+    </script>
+</body>
+</html>
